@@ -1,0 +1,2 @@
+1. grant execute permission to RSA KEY file 
+2. ssh -i <path to eecs441_007.pem> ubuntu@ec2-18-117-138-137.us-east-2.compute.amazonaws.com
