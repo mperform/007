@@ -42,15 +42,19 @@ struct CameraScanView: View {
                 .font(.title)
                 .padding(.vertical, 20)
             YourCardsCameraButton()
-                .padding(.vertical, 20)
+                .padding(.vertical, 40)
+                .buttonStyle(.bordered)
             CommCardsCameraButton()
-                .padding(.vertical, 20)
+                .padding(.vertical, 40)
+                .buttonStyle(.bordered)
+            Spacer()
             Button {
                 isPresenting.toggle()
             } label: {
                 Text("Continue")
                     .padding(.vertical, 20)
             }
+            .buttonStyle(.bordered)
         }
         .padding()
         .fullScreenCover(isPresented: $isPresenting) {

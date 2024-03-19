@@ -18,6 +18,7 @@ struct MoneyView: View {
             Text("How Much Money Do You Have?")
                 .font(.title)
                 .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
             TextField("Enter a number", text: $text1)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
@@ -25,6 +26,7 @@ struct MoneyView: View {
             Text("What Is The Amount of Money Needed to Call?")
                 .font(.title)
                 .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
             TextField("Enter a number", text: $text2)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad

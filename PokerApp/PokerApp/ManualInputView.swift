@@ -36,6 +36,7 @@ struct ManualInputView: View {
                 Text("Continue")
                     .padding(.vertical, 20)
             }
+            .buttonStyle(.bordered)
         }
         .padding()
         .fullScreenCover(isPresented: $isPresenting) {
