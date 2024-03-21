@@ -35,6 +35,7 @@ def postchatt(request):
 
     return JsonResponse({})
 
+@csrf_exempt
 def posthand(request):
     """
     user makes post request to store their hand
