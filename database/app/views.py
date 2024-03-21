@@ -74,4 +74,7 @@ def posthand(request):
     #     "cards": cards,
     #     "message": "success"    
     # })
+    return JsonResponse({
+        "message": "success"
+    })
 # Create your views here.
