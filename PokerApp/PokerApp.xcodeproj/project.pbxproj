@@ -15,6 +15,8 @@
 		87EB6B4A2BA9F4780010B9C6 /* ManualInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B492BA9F4780010B9C6 /* ManualInputView.swift */; };
 		87EB6B4C2BA9F6C00010B9C6 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B4B2BA9F6C00010B9C6 /* MoneyView.swift */; };
 		87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B4D2BA9F91A0010B9C6 /* CameraScanView.swift */; };
+		94F581152BABEB93008C237D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581142BABEB93008C237D /* Media.swift */; };
+		94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581162BABF239008C237D /* PlayerInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		87EB6B492BA9F4780010B9C6 /* ManualInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualInputView.swift; sourceTree = "<group>"; };
 		87EB6B4B2BA9F6C00010B9C6 /* MoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyView.swift; sourceTree = "<group>"; };
 		87EB6B4D2BA9F91A0010B9C6 /* CameraScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanView.swift; sourceTree = "<group>"; };
+		94F581142BABEB93008C237D /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		94F581162BABF239008C237D /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				87EB6B3B2BA9EEC60010B9C6 /* ContentView.swift */,
 				87EB6B3D2BA9EEC90010B9C6 /* Assets.xcassets */,
 				87EB6B3F2BA9EEC90010B9C6 /* Preview Content */,
+				94F581142BABEB93008C237D /* Media.swift */,
+				94F581162BABF239008C237D /* PlayerInfoView.swift */,
 			);
 			path = PokerApp;
 			sourceTree = "<group>";
@@ -151,6 +157,8 @@
 			files = (
 				87EB6B4C2BA9F6C00010B9C6 /* MoneyView.swift in Sources */,
 				87EB6B3C2BA9EEC60010B9C6 /* ContentView.swift in Sources */,
+				94F581152BABEB93008C237D /* Media.swift in Sources */,
+				94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */,
 				87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */,
 				87EB6B4A2BA9F4780010B9C6 /* ManualInputView.swift in Sources */,
 				87EB6B482BA9F0BD0010B9C6 /* SelectMode.swift in Sources */,
@@ -288,7 +296,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerApp/Preview Content\"";
-				DEVELOPMENT_TEAM = QABM8539KP;
+				DEVELOPMENT_TEAM = PLF6AJ2G54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera";
@@ -302,7 +310,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.tmaire.PokerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.hamzahus.PokerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -318,7 +326,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerApp/Preview Content\"";
-				DEVELOPMENT_TEAM = QABM8539KP;
+				DEVELOPMENT_TEAM = PLF6AJ2G54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera";
@@ -332,7 +340,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.tmaire.PokerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.hamzahus.PokerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

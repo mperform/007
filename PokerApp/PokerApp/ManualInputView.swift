@@ -37,10 +37,17 @@ struct ManualInputView: View {
                     .padding(.vertical, 20)
             }
             .buttonStyle(.bordered)
+            .fullScreenCover(isPresented: $isPresenting) {
+                MoneyView(isPresented: $isPresenting)
+            }
+            Button {
+                isPresented.toggle()
+            } label: {
+                Text("Back")
+                    .padding(.vertical, 20)
+            }
+            .buttonStyle(.bordered)
         }
         .padding()
-        .fullScreenCover(isPresented: $isPresenting) {
-            MoneyView(isPresented: $isPresenting)
-        }
     }
 }

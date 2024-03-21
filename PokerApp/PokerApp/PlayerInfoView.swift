@@ -1,20 +1,20 @@
 //
-//  ManualInputView.swift
+//  PlayerInfoView.swift
 //  PokerApp
 //
-//  Created by TEJAS MAIRE on 3/19/24.
+//  Created by Hamza Hussain on 3/21/24.
 //
 
 import SwiftUI
 
-struct MoneyView: View {
+struct PlayerInfoView: View {
     @Binding var isPresented: Bool
     @State private var text1: String = ""
     @State private var text2: String = ""
 
     var body: some View {
         VStack {
-            Text("How Much Money Do You Have?")
+            Text("How many players are there?")
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
@@ -22,13 +22,12 @@ struct MoneyView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
-            Text("What Is The Amount of Money Needed to Call?")
+            Text("What is your position")
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number", text: $text2)
+            TextField("Enter a position", text: $text2)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
             Button {
                 isPresented.toggle()
