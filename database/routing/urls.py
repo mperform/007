@@ -22,6 +22,6 @@ urlpatterns = [
     # path('getcurrenthands/', views.getcurrenthands, name='getcurrenthands'),
     # path('postcalls/', views.postcalls, name='postcalls'),
     # path('postmoney/', views.postmoney, name='postmoney'),
-    path('posthand/', views.posthand, name='posthand'),
+    path('posthand/', views.posthand, name='posthand')
     # path('postcommunitycards/', views.postcommunitycards, name='postcommunitycards'),
     ]
