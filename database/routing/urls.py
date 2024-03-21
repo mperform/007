@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 urlpatterns = [
+    path('', views.home, name='home'),  # Add this line for the root path
     # path('admin/', admin.site.urls),
     # path('getcurrenthands/', views.getcurrenthands, name='getcurrenthands'),
     # path('postcalls/', views.postcalls, name='postcalls'),
     # path('postmoney/', views.postmoney, name='postmoney'),
-    path('posthand/', views.posthand, name='posthand')
+    path('posthand/', views.posthand, name='posthand'),
     # path('postcommunitycards/', views.postcommunitycards, name='postcommunitycards'),
     ]

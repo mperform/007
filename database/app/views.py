@@ -7,7 +7,8 @@ from inference_sdk import InferenceHTTPClient
 import time
 from django.core.files.storage import FileSystemStorage
 
-
+def home(request):
+    return HttpResponse("Welcome to the home page!")
 def getchatts(request):
     if request.method != 'GET':
         return HttpResponse(status=404)
