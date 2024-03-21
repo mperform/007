@@ -40,27 +40,27 @@ def posthand(request):
     """
     user makes post request to store their hand
     """
-    if request.method != 'POST':
-        return HttpResponse(status=400)
+    # if request.method != 'POST':
+    #     return HttpResponse(status=400)
     
-    if request.FILES.get("image"):
-        content = request.FILES['image']
-        filename = str(time.time())+".jpeg"
-        fs = FileSystemStorage()
-        filename = fs.save(filename, content)
-        imageurl = fs.url(filename)
-    else:
-        return HttpResponse(status=400)
+    # if request.FILES.get("image"):
+    #     content = request.FILES['image']
+    #     filename = str(time.time())+".jpeg"
+    #     fs = FileSystemStorage()
+    #     filename = fs.save(filename, content)
+    #     imageurl = fs.url(filename)
+    # else:
+    #     return HttpResponse(status=400)
     
-    CLIENT = InferenceHTTPClient(
-        api_url="https://detect.roboflow.com",
-        api_key="mWSb39hdm6MVvx23Kwu6"
-    )   
+    # CLIENT = InferenceHTTPClient(
+    #     api_url="https://detect.roboflow.com",
+    #     api_key="mWSb39hdm6MVvx23Kwu6"
+    # )   
 
-    result = CLIENT.infer(filename, model_id="playing-cards-ow27d/4")    
-    cards = []
-    for card in result['predictions']:
-        cards.append(card['class'])
+    # result = CLIENT.infer(filename, model_id="playing-cards-ow27d/4")    
+    # cards = []
+    # for card in result['predictions']:
+    #     cards.append(card['class'])
     
     # cursor = connection.cursor()
     # # create new db for user hands
