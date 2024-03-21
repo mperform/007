@@ -62,12 +62,12 @@ def posthand(request):
     for card in result['predictions']:
         cards.append(card['class'])
     
-    cursor = connection.cursor()
-    # create new db for user hands
-    cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
+    # cursor = connection.cursor()
+    # # create new db for user hands
+    # cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
     
-    cursor.execute('INSERT INTO userhands (imageurl, cards) VALUES '
-                   '(%s, %s);', (imageurl, cards))
+    # cursor.execute('INSERT INTO userhands (imageurl, cards) VALUES '
+    #                '(%s, %s);', (imageurl, cards))
     return JsonResponse({
         "imageurl": imageurl,
         "cards": cards,
