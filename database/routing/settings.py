@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(-&89ovc&-#6zmot89hja(b4erazem%=45si8gf_29i9)23fme
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-18-117-138-137.us-east-2.compute.amazonaws.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ec2-18-117-138-137.us-east-2.compute.amazonaws.com', '18.117.138.137' 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -124,3 +124,6 @@ STATIC_ROOT = BASE_DIR / 'static'   # added line
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_URL = 'https://18.117.138.137/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
