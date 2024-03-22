@@ -62,23 +62,37 @@ def posthand(request):
     
     result = CLIENT.infer('media/'+filename, model_id='playing-cards-ow27d/4')    
     cards = []
-    for card in result['predictions']:
-        if card['class'] not in cards:
-            cards.append(card['class'])
-    
+    insert_sql = """
+    INSERT INTO userhands (imageurl, cards) VALUES (%s, %s);
+    """
     cursor = connection.cursor()
     # create new db for user hands
     cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
     
-    cursor.execute('INSERT INTO userhands (imageurl, cards) VALUES '
-                   '(%s, %s);', (imageurl, cards))
+    for card in result['predictions']:
+        if card['class'] not in cards:
+            cards.append(card['class'])
+            cursor.execute(insert_sql, (imageurl, card['class']))
+    
+
     return JsonResponse({
-        "imageurl": imageurl,
-        "cards": cards,
-        "message": "success"    
+        # "imageurl": imageurl,
+        # "cards": cards,
+        # "message": "success"    
     })
-    return JsonResponse({
-        "message": "success",
-	"hello": "test"
-    })
+
+def gethand(request):
+    """
+    user makes get request to retrieve their hand
+    """
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT imageurl, cards FROM userhands ORDER BY id DESC LIMIT 1;')
+    rows = cursor.fetchall()
+    response = {}
+    response['hand'] = rows
+    return JsonResponse(response)
+
 # Create your views here
