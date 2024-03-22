@@ -16,6 +16,8 @@ struct CameraScanView: View {
     @State private var isPresentingComm = false
     @State private var yourCards: UIImage? = nil
     @State private var communityCards: UIImage? = nil
+    @State private var playerCardsStr: String = ""
+    @State private var communityCardsStr: String = ""
     
     @ViewBuilder
     func YourCardsCameraButton() -> some View {
@@ -38,6 +40,28 @@ struct CameraScanView: View {
             Text("Community Cards")
                 .padding(.vertical, 20)
 //                .scaleEffect(1.2)
+        }
+    }
+    
+    @ViewBuilder
+    func SubmitButton() -> some View {
+        Button {
+            Task {
+                if let _ = await ImageStore.shared.postHand(image: yourCards) {
+                    ImageStore.shared.getHand()
+                }
+                
+                if let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
+                    ImageStore.shared.getCommunityCards()
+                }
+                
+//                print("This", ImageStore.shared.yourCards)
+//                print("This", ImageStore.shared.yourCommunityCards)
+                isPresenting.toggle()
+            }
+        } label: {
+            Text("Continue")
+                .padding(.vertical, 20)
         }
     }
 
@@ -74,15 +98,10 @@ struct CameraScanView: View {
                 }
             }
             Spacer()
-            Button {
-                isPresenting.toggle()
-            } label: {
-                Text("Continue")
-                    .padding(.vertical, 20)
-            }
+            SubmitButton()
             .buttonStyle(.bordered)
             .fullScreenCover(isPresented: $isPresenting) {
-                MoneyView(isPresented: $isPresenting)
+                CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
             }
             Button {
                 isPresented.toggle()

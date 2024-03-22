@@ -10,8 +10,8 @@ import SwiftUI
 
 struct CardsView: View {
     @Binding var isPresented: Bool
-    @Binding var playerCardsString: String
-    @Binding var communityCardsString: String
+    @State var playerCardsString: String
+    @State var communityCardsString: String
     @State private var isPresenting = false
     
     var playerCards: [String] {
