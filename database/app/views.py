@@ -59,7 +59,7 @@ def posthand(request):
          api_url="https://detect.roboflow.com",
          api_key="mWSb39hdm6MVvx23Kwu6"
     )
-    result = CLIENT.infer(filename, model_id='playing-cards-detection/4')    
+    result = CLIENT.infer(filename, model_id='playing-cards-ow27d/4')    
     # cards = []
     # for card in result['predictions']:
     #     cards.append(card['class'])
