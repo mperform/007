@@ -91,8 +91,9 @@ def gethand(request):
     cursor = connection.cursor()
     cursor.execute('SELECT cards FROM userhands ORDER BY id DESC;')
     rows = cursor.fetchall()
+    cards = [row[0] for row in rows]
     response = {}
-    response['cards'] = rows
+    response['cards'] = cards
     return JsonResponse(response)
 
 # Create your views here
