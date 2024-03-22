@@ -61,21 +61,21 @@ def posthand(request):
     )
     
     result = CLIENT.infer('media/'+filename, model_id='playing-cards-ow27d/4')    
-    # cards = []
-    # for card in result['predictions']:
-    #     cards.append(card['class'])
+    cards = []
+    for card in result['predictions']:
+        cards.append(card['class'])
     
-    # cursor = connection.cursor()
-    # # create new db for user hands
-    # cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
+    cursor = connection.cursor()
+    # create new db for user hands
+    cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
     
-    # cursor.execute('INSERT INTO userhands (imageurl, cards) VALUES '
-    #                '(%s, %s);', (imageurl, cards))
-    # return JsonResponse({
-    #     "imageurl": imageurl,
-    #     "cards": cards,
-    #     "message": "success"    
-    # })
+    cursor.execute('INSERT INTO userhands (imageurl, cards) VALUES '
+                   '(%s, %s);', (imageurl, cards))
+    return JsonResponse({
+        "imageurl": imageurl,
+        "cards": cards,
+        "message": "success"    
+    })
     return JsonResponse({
         "message": "success",
 	"hello": "test"
