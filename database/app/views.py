@@ -95,10 +95,11 @@ def gethand(request):
     response = {}
     response['cards'] = cards
     return JsonResponse(response)
+
 @csrf_exempt
 def postcommunitycards(request):
     """
-    user makes post request to store their hand
+    user makes post request to store community cards
     """
     if request.method != 'POST':
         return HttpResponse(status=400)
@@ -137,4 +138,19 @@ def postcommunitycards(request):
         # "cards": cards,
         # "message": "success"    
     })
+
+def getcommunitycards(request):
+    """
+    user makes get request to retrieve community cards
+    """
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT cards FROM communitycards ORDER BY id DESC;')
+    rows = cursor.fetchall()
+    cards = [row[0] for row in rows]
+    response = {}
+    response['cards'] = cards
+    return JsonResponse(response)
 # Create your views here
