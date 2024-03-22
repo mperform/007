@@ -153,4 +153,21 @@ def getcommunitycards(request):
     response = {}
     response['cards'] = cards
     return JsonResponse(response)
-# Create your views here
+
+@csrf_exempt
+def postmoney(request):
+    """
+    user makes post request to store their money
+    """
+    if request.method != 'POST':
+        return HttpResponse(status=400)
+    
+    useramount = request.POST.get("useramount")
+    callamount = request.POST.get("callamount")
+    
+    if useramount and callamount:
+        cursor = connection.cursor()
+        cursor.execute('CREATE TABLE IF NOT EXISTS usermoney (id SERIAL PRIMARY KEY, useramount TEXT, callamount TEXT);')
+        cursor.execute('INSERT INTO usermoney (useramount, callamount) VALUES (%s, %s);', (useramount, callamount))
+
+    return JsonResponse({})

@@ -19,6 +19,7 @@
 		94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581162BABF239008C237D /* PlayerInfoView.swift */; };
 		94F581192BADDCC1008C237D /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581182BADDCC1008C237D /* CardsView.swift */; };
 		94F5811B2BADE026008C237D /* PlayingCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5811A2BADE026008C237D /* PlayingCards.swift */; };
+		94F5811D2BAE2761008C237D /* OpponentMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5811C2BAE2761008C237D /* OpponentMoneyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		94F581162BABF239008C237D /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
 		94F581182BADDCC1008C237D /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		94F5811A2BADE026008C237D /* PlayingCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCards.swift; sourceTree = "<group>"; };
+		94F5811C2BAE2761008C237D /* OpponentMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentMoneyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				94F581162BABF239008C237D /* PlayerInfoView.swift */,
 				94F581182BADDCC1008C237D /* CardsView.swift */,
 				94F5811A2BADE026008C237D /* PlayingCards.swift */,
+				94F5811C2BAE2761008C237D /* OpponentMoneyView.swift */,
 			);
 			path = PokerApp;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				94F581192BADDCC1008C237D /* CardsView.swift in Sources */,
 				94F5811B2BADE026008C237D /* PlayingCards.swift in Sources */,
 				94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */,
+				94F5811D2BAE2761008C237D /* OpponentMoneyView.swift in Sources */,
 				87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */,
 				87EB6B4A2BA9F4780010B9C6 /* ManualInputView.swift in Sources */,
 				87EB6B482BA9F0BD0010B9C6 /* SelectMode.swift in Sources */,
