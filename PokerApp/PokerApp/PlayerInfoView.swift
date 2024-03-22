@@ -15,11 +15,11 @@ struct PlayerInfoView: View {
 
     var body: some View {
         VStack {
-            Text("How Many Players Are There?")
+            Text("How Many Opponents Are There?")
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number from 2-6", value: $numPlayers, formatter: NumberFormatter())
+            TextField("Enter a number from 1-4", value: $numPlayers, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field

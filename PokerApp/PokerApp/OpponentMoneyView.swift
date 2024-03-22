@@ -42,7 +42,7 @@ struct OpponentMoneyView: View {
                 
                 TextField("Enter amount", value: self.$textValues[index], formatter: NumberFormatter())
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.vertical, 40) // Add padding around the text field
+                    .padding(.vertical, 10) // Add padding around the text field
             }
             Button {
                 isPresented.toggle()
