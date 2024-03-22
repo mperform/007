@@ -68,7 +68,8 @@ def posthand(request):
     cursor = connection.cursor()
     # create new db for user hands
     cursor.execute('CREATE TABLE IF NOT EXISTS userhands (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
-    
+    cursor.execute('TRUNCATE TABLE userhands;')
+
     for card in result['predictions']:
         if card['class'] not in cards:
             cards.append(card['class'])
@@ -126,7 +127,7 @@ def postcommunitycards(request):
     cursor = connection.cursor()
     # create new db for user hands
     cursor.execute('CREATE TABLE IF NOT EXISTS communitycards (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
-    
+    cursor.execute('TRUNCATE TABLE communitycards;')
     for card in result['predictions']:
         if card['class'] not in cards:
             cards.append(card['class'])
