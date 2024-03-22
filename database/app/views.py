@@ -89,7 +89,7 @@ def gethand(request):
         return HttpResponse(status=400)
     
     cursor = connection.cursor()
-    cursor.execute('SELECT cards FROM userhands ORDER BY id DESC LIMIT 1;')
+    cursor.execute('SELECT cards FROM userhands ORDER BY id DESC;')
     rows = cursor.fetchall()
     response = {}
     response['cards'] = rows
