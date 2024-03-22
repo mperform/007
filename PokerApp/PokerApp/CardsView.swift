@@ -31,7 +31,7 @@ struct CardsView: View {
     
     var body: some View {
         VStack {
-            Text("Is the following information correct?")
+            Text("Confirm the Cards")
                 .font(.system(size: 30, weight: .bold, design: .default))
                 .padding(.top, 20)
             
