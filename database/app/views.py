@@ -63,7 +63,8 @@ def posthand(request):
     result = CLIENT.infer('media/'+filename, model_id='playing-cards-ow27d/4')    
     cards = []
     for card in result['predictions']:
-        cards.append(card['class'])
+        if card['class'] not in cards:
+            cards.append(card['class'])
     
     cursor = connection.cursor()
     # create new db for user hands
