@@ -38,7 +38,7 @@ struct ManualInputView: View {
             }
             .buttonStyle(.bordered)
             .fullScreenCover(isPresented: $isPresenting) {
-                CardsView(isPresented: $isPresenting, playerCardsString: $playerCards, communityCardsString: $communityCards)
+                CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
             }
             Button {
                 isPresented.toggle()

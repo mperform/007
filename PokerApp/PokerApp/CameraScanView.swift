@@ -49,10 +49,9 @@ struct CameraScanView: View {
             Task {
                 if let _ = await ImageStore.shared.postHand(image: yourCards) {
                     ImageStore.shared.getHand()
-                }
-                
-                if let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
-                    ImageStore.shared.getCommunityCards()
+                    if let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
+                        ImageStore.shared.getCommunityCards()
+                    }
                 }
                 
 //                print("This", ImageStore.shared.yourCards)
