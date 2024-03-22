@@ -30,31 +30,6 @@ struct CardsView: View {
     }
     
     var body: some View {
-//        VStack(alignment: .leading) {
-//            Text("Your Cards")
-//                .font(.headline)
-//            ForEach(playerCards, id: \.self) { playerCards in
-//                HStack {
-//                    Image(systemName: "circle.fill")
-//                    Text(playerCards)
-//                        .font(.body)
-//                }
-////                .padding(.leading, 20)
-//            }
-//            .padding()
-//            
-//            Text("Community Cards")
-//                .font(.headline)
-//            ForEach(communityCards, id: \.self) { communityCards in
-//                HStack {
-//                    Image(systemName: "circle.fill")
-//                    Text(communityCards)
-//                        .font(.body)
-//                }
-////                .padding(.leading, 20)
-//            }
-//        }
-//        .padding()
         VStack {
             Text("Is the following information correct?")
                 .font(.system(size: 30, weight: .bold, design: .default))
@@ -73,17 +48,6 @@ struct CardsView: View {
                 }
             }
             
-//            Button {
-//                isPresenting.toggle()
-//            } label: {
-//                Text("Confirm")
-//                    .padding(.vertical, 20)
-//            }
-//            .buttonStyle(.bordered)
-//            fullScreenCover(isPresented: $isPresenting) {
-//                 MoneyView(isPresented: $isPresenting)
-//            }
-//            
             HStack {
                 Button {
                     isPresented.toggle()
