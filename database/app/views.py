@@ -5,7 +5,9 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from inference_sdk import InferenceHTTPClient
 import time
+from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+import base64
 
 def home(request):
     return HttpResponse("Welcome to the home page!")
@@ -41,24 +43,23 @@ def posthand(request):
     """
     user makes post request to store their hand
     """
-    # if request.method != 'POST':
-    #     return HttpResponse(status=400)
+    if request.method != 'POST':
+        return HttpResponse(status=400)
     
-    # if request.FILES.get("image"):
-    #     content = request.FILES['image']
-    #     filename = str(time.time())+".jpeg"
-    #     fs = FileSystemStorage()
-    #     filename = fs.save(filename, content)
-    #     imageurl = fs.url(filename)
-    # else:
-    #     return HttpResponse(status=400)
-    
-    # CLIENT = InferenceHTTPClient(
-    #     api_url="https://detect.roboflow.com",
-    #     api_key="mWSb39hdm6MVvx23Kwu6"
-    # )   
-
-    # result = CLIENT.infer(filename, model_id="playing-cards-ow27d/4")    
+    if request.FILES.get("image"):
+        content = request.FILES['image']
+        filename = str(time.time())+".jpeg"
+        fs = FileSystemStorage()
+        filename = fs.save(filename, content)
+        imageurl = fs.url(filename)
+    else:
+        return HttpResponse(status=400)
+     
+    CLIENT = InferenceHTTPClient(
+         api_url="https://detect.roboflow.com",
+         api_key="mWSb39hdm6MVvx23Kwu6"
+    )
+    result = CLIENT.infer(filename, model_id='playing-cards-detection/1')    
     # cards = []
     # for card in result['predictions']:
     #     cards.append(card['class'])
@@ -75,6 +76,7 @@ def posthand(request):
     #     "message": "success"    
     # })
     return JsonResponse({
-        "message": "success"
+        "message": "success",
+	"hello": "test"
     })
-# Create your views here.
+# Create your views here
