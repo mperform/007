@@ -11,6 +11,7 @@ struct MoneyView: View {
     @Binding var isPresented: Bool
     @State private var text1: String = ""
     @State private var text2: String = ""
+    @State private var isPresenting = false
 
     var body: some View {
         VStack {
@@ -30,14 +31,26 @@ struct MoneyView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Back")
-                    .padding(.vertical, 20)
-            }
-            .buttonStyle(.bordered)
         }
-        .padding()
+        HStack {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(.bordered)
+                
+                Button {
+                    isPresenting.toggle()
+                } label: {
+                    Text("Confirm")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(.bordered)
+                .fullScreenCover(isPresented: $isPresenting) {
+                     PlayerInfoView(isPresented: $isPresenting)
+                }
+            }
     }
 }
