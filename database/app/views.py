@@ -50,7 +50,7 @@ def posthand(request):
         content = request.FILES['image']
         filename = str(time.time())+".jpeg"
         fs = FileSystemStorage()
-        filename = fs.save(filename, content)
+        filepath = fs.save(filename, content)
         imageurl = fs.url(filename)
     else:
         return HttpResponse(status=400)
@@ -59,7 +59,8 @@ def posthand(request):
         api_url="https://detect.roboflow.com",
         api_key="l6SJyHjHh6vPwwwD6Uhd"
     )
-    result = CLIENT.infer(filename, model_id='playing-cards-ow27d/4')    
+    
+    result = CLIENT.infer('media/'+filename, model_id='playing-cards-ow27d/4')    
     # cards = []
     # for card in result['predictions']:
     #     cards.append(card['class'])
