@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PlayerInfoView: View {
     @Binding var isPresented: Bool
-    @State private var text1: String = ""
-    @State private var text2: String = ""
+    @State private var numPlayers: Int = 0
+    @State private var position: Int = 0
+    @State private var isPresenting = false
 
     var body: some View {
         VStack {
@@ -18,7 +19,7 @@ struct PlayerInfoView: View {
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number from 2-6", text: $text1)
+            TextField("Enter a number from 2-6", value: $numPlayers, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
@@ -26,9 +27,20 @@ struct PlayerInfoView: View {
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a position: 0 is dealer, 1 is one from dealer (small blind), ...", text: $text2)
+            TextField("Enter a position: 0 is dealer, 1 is one from dealer (small blind), ...", value: $position, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
+            Button {
+                isPresenting.toggle()
+            } label: {
+                Text("Continue")
+                    .padding(.vertical, 20)
+            }
+            .buttonStyle(.bordered)
+            .fullScreenCover(isPresented: $isPresenting) {
+                OpponentMoneyView(isPresented: $isPresenting, numPlayers: $numPlayers, position: $position)
+            }
             Button {
                 isPresented.toggle()
             } label: {
