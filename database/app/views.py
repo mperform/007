@@ -95,5 +95,46 @@ def gethand(request):
     response = {}
     response['cards'] = cards
     return JsonResponse(response)
+@csrf_exempt
+def postcommunitycards(request):
+    """
+    user makes post request to store their hand
+    """
+    if request.method != 'POST':
+        return HttpResponse(status=400)
+    
+    if request.FILES.get("image"):
+        content = request.FILES['image']
+        filename = str(time.time())+".jpeg"
+        fs = FileSystemStorage()
+        filepath = fs.save(filename, content)
+        imageurl = fs.url(filename)
+    else:
+        return HttpResponse(status=400)
+     
+    CLIENT = InferenceHTTPClient(
+        api_url="https://detect.roboflow.com",
+        api_key="l6SJyHjHh6vPwwwD6Uhd"
+    )
+    
+    result = CLIENT.infer('media/'+filename, model_id='playing-cards-ow27d/4')    
+    cards = []
+    insert_sql = """
+    INSERT INTO communitycards (imageurl, cards) VALUES (%s, %s);
+    """
+    cursor = connection.cursor()
+    # create new db for user hands
+    cursor.execute('CREATE TABLE IF NOT EXISTS communitycards (id SERIAL PRIMARY KEY, imageurl TEXT, cards TEXT);')
+    
+    for card in result['predictions']:
+        if card['class'] not in cards:
+            cards.append(card['class'])
+            cursor.execute(insert_sql, (imageurl, card['class']))
+    
 
+    return JsonResponse({
+        # "imageurl": imageurl,
+        # "cards": cards,
+        # "message": "success"    
+    })
 # Create your views here
