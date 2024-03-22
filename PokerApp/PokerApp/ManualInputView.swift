@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ManualInputView: View {
     @Binding var isPresented: Bool
-    @State private var text1: String = ""
-    @State private var text2: String = ""
+    @State private var playerCards: String = ""
+    @State private var communityCards: String = ""
     @State private var isPresenting = false
 
     var body: some View {
@@ -21,13 +21,13 @@ struct ManualInputView: View {
             Text("Your Cards")
                 .font(.title)
                 .padding(.vertical, 20)
-            TextField("Example: KH, 2S, AH ", text: $text1)
+            TextField("Example: KH, 2S, AH ", text: $playerCards)
                 .textFieldStyle(RoundedBorderTextFieldStyle()) // Apply a rounded border style to the text field
                 .padding(.vertical, 20) // Add padding around the text field
             Text("Community Cards")
                 .font(.title)
                 .padding(.vertical, 20)
-            TextField("Example: KH, 2S, AH ", text: $text2)
+            TextField("Example: KH, 2S, AH ", text: $communityCards)
                 .textFieldStyle(RoundedBorderTextFieldStyle()) // Apply a rounded border style to the text field
                 .padding(.vertical, 20) // Add padding around the text field
             Button {
@@ -38,7 +38,7 @@ struct ManualInputView: View {
             }
             .buttonStyle(.bordered)
             .fullScreenCover(isPresented: $isPresenting) {
-                MoneyView(isPresented: $isPresenting)
+                CardsView(isPresented: $isPresenting, playerCardsString: $playerCards, communityCardsString: $communityCards)
             }
             Button {
                 isPresented.toggle()

@@ -17,6 +17,8 @@
 		87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B4D2BA9F91A0010B9C6 /* CameraScanView.swift */; };
 		94F581152BABEB93008C237D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581142BABEB93008C237D /* Media.swift */; };
 		94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581162BABF239008C237D /* PlayerInfoView.swift */; };
+		94F581192BADDCC1008C237D /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581182BADDCC1008C237D /* CardsView.swift */; };
+		94F5811B2BADE026008C237D /* PlayingCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F5811A2BADE026008C237D /* PlayingCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		87EB6B4D2BA9F91A0010B9C6 /* CameraScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraScanView.swift; sourceTree = "<group>"; };
 		94F581142BABEB93008C237D /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		94F581162BABF239008C237D /* PlayerInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoView.swift; sourceTree = "<group>"; };
+		94F581182BADDCC1008C237D /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
+		94F5811A2BADE026008C237D /* PlayingCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				87EB6B3F2BA9EEC90010B9C6 /* Preview Content */,
 				94F581142BABEB93008C237D /* Media.swift */,
 				94F581162BABF239008C237D /* PlayerInfoView.swift */,
+				94F581182BADDCC1008C237D /* CardsView.swift */,
+				94F5811A2BADE026008C237D /* PlayingCards.swift */,
 			);
 			path = PokerApp;
 			sourceTree = "<group>";
@@ -158,6 +164,8 @@
 				87EB6B4C2BA9F6C00010B9C6 /* MoneyView.swift in Sources */,
 				87EB6B3C2BA9EEC60010B9C6 /* ContentView.swift in Sources */,
 				94F581152BABEB93008C237D /* Media.swift in Sources */,
+				94F581192BADDCC1008C237D /* CardsView.swift in Sources */,
+				94F5811B2BADE026008C237D /* PlayingCards.swift in Sources */,
 				94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */,
 				87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */,
 				87EB6B4A2BA9F4780010B9C6 /* ManualInputView.swift in Sources */,
