@@ -89,10 +89,9 @@ def gethand(request):
         return HttpResponse(status=400)
     
     cursor = connection.cursor()
-    cursor.execute('SELECT imageurl, cards FROM userhands ORDER BY id DESC LIMIT 1;')
+    cursor.execute('SELECT cards FROM userhands ORDER BY id DESC LIMIT 1;')
     rows = cursor.fetchall()
-    response = {}
-    response['hand'] = rows
-    return JsonResponse(response)
+
+    return JsonResponse(rows)
 
 # Create your views here
