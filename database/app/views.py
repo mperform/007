@@ -56,8 +56,8 @@ def posthand(request):
         return HttpResponse(status=400)
      
     CLIENT = InferenceHTTPClient(
-         api_url="https://detect.roboflow.com",
-         api_key="mWSb39hdm6MVvx23Kwu6"
+        api_url="https://detect.roboflow.com",
+        api_key="l6SJyHjHh6vPwwwD6Uhd"
     )
     result = CLIENT.infer(filename, model_id='playing-cards-ow27d/4')    
     # cards = []
