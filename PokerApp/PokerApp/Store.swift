@@ -104,4 +104,79 @@ final class ImageStore {
             }
         }, to: apiUrl, method: .post).validate().serializingData().value
     }
+    
+    func postfinalhand(_ hand: String, completion: @escaping () -> ()) {
+        let jsonObj = ["cards":hand]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj) else {
+            print("postfinalhand: jsonData serialization error")
+            return
+        }
+                
+        guard let apiUrl = URL(string: "\(serverUrl)postfinalhand/") else {
+            print("postfinalhand: Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                print("postfinalhand: NETWORKING ERROR")
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    print("postfinalhand: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                } else {
+                    completion()
+                }
+            }
+
+        }.resume()
+    }
+    
+    func postfinalcommunitycards(_ cards: String, completion: @escaping () -> ()) {
+        let jsonObj = ["cards":cards]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj) else {
+            print("postfinalcommunitycards: jsonData serialization error")
+            return
+        }
+                
+        guard let apiUrl = URL(string: "\(serverUrl)postfinalcommunitycards/") else {
+            print("postfinalcommunitycards: Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                print("postfinalcommunitycards: NETWORKING ERROR")
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    print("postfinalcommunitycards: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                } else {
+                    completion()
+                }
+            }
+
+        }.resume()
+    }
+
 }

@@ -32,15 +32,7 @@ struct MoneyView: View {
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
         }
-        HStack(spacing:60) {
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Go Back")
-                        .padding(.vertical, 20)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                
+        HStack() {
                 Button {
                     isPresenting.toggle()
                 } label: {
