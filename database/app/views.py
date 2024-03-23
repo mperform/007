@@ -180,7 +180,7 @@ def postfinalhand(request):
 
     json_data = json.loads(request.body)
     response = json_data['cards']
-    cards = response.split(',')
+    cards = response.split(', ')
 
     cursor = connection.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS userfinalhands (cards TEXT);')
@@ -188,7 +188,7 @@ def postfinalhand(request):
 
     for card in cards:
         cursor.execute('INSERT INTO userfinalhands (cards) VALUES '
-                   '(%s);', (card))
+                   '(%s);', (card,))
 
     return JsonResponse({})
 
@@ -199,7 +199,7 @@ def postfinalcommunitycards(request):
 
     json_data = json.loads(request.body)
     response = json_data['cards']
-    cards = response.split(',')
+    cards = response.split(', ')
 
     cursor = connection.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS finalcommunitycards (cards TEXT);')
@@ -207,6 +207,6 @@ def postfinalcommunitycards(request):
 
     for card in cards:
         cursor.execute('INSERT INTO finalcommunitycards (cards) VALUES '
-                   '(%s);', (card))
+                   '(%s);', (card,))
 
     return JsonResponse({})
