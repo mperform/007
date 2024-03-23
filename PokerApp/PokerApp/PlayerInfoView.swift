@@ -17,17 +17,21 @@ struct PlayerInfoView: View {
         VStack {
             Text("How Many Opponents Are There?")
                 .font(.title)
-                .padding(.vertical, 20)
+                .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number from 1-4", value: $numPlayers, formatter: NumberFormatter())
+            Text("(Enter a number from 1-4)")
+                .multilineTextAlignment(.center)
+            TextField("0", value: $numPlayers, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
             Text("What is Your Position")
                 .font(.title)
-                .padding(.vertical, 20)
+                .padding(.vertical, 10)
                 .multilineTextAlignment(.center)
-            TextField("Enter a position: 0 is dealer, 1 is one from dealer (small blind), ...", value: $position, formatter: NumberFormatter())
+            Text("(0 is dealer, 1 is one from dealer (small blind), ...)")
+                .multilineTextAlignment(.center)
+            TextField("0", value: $position, formatter: NumberFormatter())
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
