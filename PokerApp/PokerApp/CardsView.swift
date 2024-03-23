@@ -31,7 +31,7 @@ struct CardsView: View {
     
     var body: some View {
         VStack {
-            Text("Confirm the Cards")
+            Text("Confirm The Cards")
                 .font(.system(size: 30, weight: .bold, design: .default))
                 .padding(.top, 20)
             
@@ -48,14 +48,14 @@ struct CardsView: View {
                 }
             }
             
-            HStack {
+            HStack(spacing:60) {
                 Button {
                     isPresented.toggle()
                 } label: {
                     Text("Go Back")
                         .padding(.vertical, 20)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(BorderlessButtonStyle())
                 
                 Button {
                     isPresenting.toggle()
@@ -63,7 +63,7 @@ struct CardsView: View {
                     Text("Confirm")
                         .padding(.vertical, 20)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(BorderlessButtonStyle())
                 .fullScreenCover(isPresented: $isPresenting) {
                      MoneyView(isPresented: $isPresenting)
                 }

@@ -14,14 +14,16 @@ struct SelectModeView: View {
     var body: some View {
         VStack {
             Text("How Would You Like To Input Your Cards?")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
                 .font(.title)
-                .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
             Button {
                 isPresentingManual.toggle()
             } label: {
                 Text("Manual Input")
                     .padding(.vertical, 40)
+                    .padding(.horizontal,50)
             }
             .buttonStyle(.bordered)
             Button {
@@ -29,6 +31,7 @@ struct SelectModeView: View {
             } label: {
                 Text("Camera Scan")
                     .padding(.vertical, 40)
+                    .padding(.horizontal,50)
             }
             .buttonStyle(.bordered)
         .fullScreenCover(isPresented: $isPresentingCamera) {

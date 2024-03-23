@@ -26,7 +26,8 @@ struct CameraScanView: View {
             isPresentingYours.toggle()
         } label: {
             Text("Your Cards")
-                .padding(.vertical,20)
+                .padding(.vertical, 40)
+                .padding(.horizontal,80)
 //                .scaleEffect(1.2)
         }
     }
@@ -38,7 +39,8 @@ struct CameraScanView: View {
             isPresentingComm.toggle()
         } label: {
             Text("Community Cards")
-                .padding(.vertical, 20)
+                .padding(.vertical, 40)
+                .padding(.horizontal,60)
 //                .scaleEffect(1.2)
         }
     }
@@ -47,16 +49,6 @@ struct CameraScanView: View {
     func SubmitButton() -> some View {
         Button {
             Task {
-//                let first = await ImageStore.shared.postHand(image: yourCards)
-//                let second = await ImageStore.shared.postCommunityCards(image: communityCards)
-//                if first != nil && second != nil{
-//                    ImageStore.shared.getHand()
-//                    ImageStore.shared.getCommunityCards()
-// 
-//                }
-//                isPresenting.toggle()
-                
-                
                 
                 if let _ = await ImageStore.shared.postHand(image: yourCards) {
                     ImageStore.shared.getHand()
@@ -67,17 +59,6 @@ struct CameraScanView: View {
                     }
                 }
                 isPresenting.toggle()
-                
-                
-                
-//                if let _ = await ImageStore.shared.postHand(image: yourCards),
-//                   let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
-//                    await Task.sleep(3 * 1_000_000_000)
-//                    ImageStore.shared.getHand()
-//                    ImageStore.shared.getCommunityCards()
-//                    
-//                    isPresenting.toggle()
-//                }
                         
             }
         } label: {
@@ -89,16 +70,18 @@ struct CameraScanView: View {
     var body: some View {
         VStack {
             Text("Scan Cards")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
                 .font(.title)
-                .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
             YourCardsCameraButton()
-                .padding(.vertical, 40)
+                .padding(.vertical, 20)
                 .buttonStyle(.bordered)
                 .fullScreenCover(isPresented: $isPresentingYours) {
                     ImagePicker(sourceType: $sourceTypeYours, image: $yourCards)
                 }
             CommCardsCameraButton()
-                .padding(.vertical, 40)
+                .padding(.vertical, 20)
                 .buttonStyle(.bordered)
                 .fullScreenCover(isPresented: $isPresentingComm) {
                     ImagePicker(sourceType: $sourceTypeComm, image: $communityCards)
@@ -119,19 +102,20 @@ struct CameraScanView: View {
                 }
             }
             Spacer()
-            SubmitButton()
-            .buttonStyle(.bordered)
-            .fullScreenCover(isPresented: $isPresenting) {
-                CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
+            HStack(spacing: 60) {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                SubmitButton()
+                    .buttonStyle(BorderlessButtonStyle())
+                    .fullScreenCover(isPresented: $isPresenting) {
+                        CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
+                    }
             }
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Back")
-                    .padding(.vertical, 20)
-            }
-            .buttonStyle(.bordered)
         }
-        .padding()
     }
 }

@@ -16,8 +16,10 @@ struct ManualInputView: View {
     var body: some View {
         VStack {
             Text("Type Each Card")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
                 .font(.title)
-                .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
             Text("Your Cards")
                 .font(.title)
                 .padding(.vertical, 20)
@@ -30,23 +32,26 @@ struct ManualInputView: View {
             TextField("Example: KH, 2S, AH ", text: $communityCards)
                 .textFieldStyle(RoundedBorderTextFieldStyle()) // Apply a rounded border style to the text field
                 .padding(.vertical, 20) // Add padding around the text field
-            Button {
-                isPresenting.toggle()
-            } label: {
-                Text("Continue")
-                    .padding(.vertical, 20)
+            
+            HStack(spacing:60) {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                Button {
+                    isPresenting.toggle()
+                } label: {
+                    Text("Continue")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .fullScreenCover(isPresented: $isPresenting) {
+                    CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
+                }
             }
-            .buttonStyle(.bordered)
-            .fullScreenCover(isPresented: $isPresenting) {
-                CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
-            }
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Back")
-                    .padding(.vertical, 20)
-            }
-            .buttonStyle(.bordered)
         }
         .padding()
     }

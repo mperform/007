@@ -35,23 +35,25 @@ struct PlayerInfoView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
-            Button {
-                isPresenting.toggle()
-            } label: {
-                Text("Continue")
-                    .padding(.vertical, 20)
+            HStack(spacing:60) {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                Button {
+                    isPresenting.toggle()
+                } label: {
+                    Text("Continue")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                .fullScreenCover(isPresented: $isPresenting) {
+                    OpponentMoneyView(isPresented: $isPresenting, numPlayers: $numPlayers, position: $position)
+                }
             }
-            .buttonStyle(.bordered)
-            .fullScreenCover(isPresented: $isPresenting) {
-                OpponentMoneyView(isPresented: $isPresenting, numPlayers: $numPlayers, position: $position)
-            }
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Back")
-                    .padding(.vertical, 20)
-            }
-            .buttonStyle(.bordered)
         }
         .padding()
     }

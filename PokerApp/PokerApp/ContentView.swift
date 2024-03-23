@@ -12,6 +12,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Welcome to PokerPro!")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
                 .font(.title)
                 .multilineTextAlignment(.center)
             Button {
@@ -19,8 +21,10 @@ struct ContentView: View {
             } label: {
                 Text("Start")
                     .padding(.vertical, 20)
+                    .padding(.horizontal,30)
             }
             .buttonStyle(.bordered)
+            .controlSize(.large)
         }
         .fullScreenCover(isPresented: $isPresenting) {
             SelectModeView(isPresented: $isPresenting)

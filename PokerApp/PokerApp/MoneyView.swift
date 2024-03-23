@@ -32,22 +32,22 @@ struct MoneyView: View {
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
         }
-        HStack {
+        HStack(spacing:60) {
                 Button {
                     isPresented.toggle()
                 } label: {
                     Text("Go Back")
                         .padding(.vertical, 20)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(BorderlessButtonStyle())
                 
                 Button {
                     isPresenting.toggle()
                 } label: {
-                    Text("Confirm")
+                    Text("Continue")
                         .padding(.vertical, 20)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(BorderlessButtonStyle())
                 .fullScreenCover(isPresented: $isPresenting) {
                      PlayerInfoView(isPresented: $isPresenting)
                 }

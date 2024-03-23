@@ -29,7 +29,13 @@ struct OpponentMoneyView: View {
     
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
+            Text("Enter Opponent Info")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
+                .font(.title)
+                .multilineTextAlignment(.center)
+            Spacer()
             ForEach(0..<numPlayers, id: \.self) { index in
                 Text("Opponent #\(index + 1)")
                 Picker("Select an option", selection: self.$selectedOptions[index]) {
@@ -40,17 +46,19 @@ struct OpponentMoneyView: View {
                 .pickerStyle(MenuPickerStyle()) // Use MenuPickerStyle for dropdown appearance
                 .frame(maxWidth: .infinity, alignment: .leading) // Set alignment on Picker
                 
-                TextField("Enter amount", value: self.$textValues[index], formatter: NumberFormatter())
+                TextField("Enter money amount", value: self.$textValues[index], formatter: NumberFormatter())
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.vertical, 10) // Add padding around the text field
             }
-            Button {
-                isPresented.toggle()
-            } label: {
-                Text("Back")
-                    .padding(.vertical, 20)
+            HStack {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }
-            .buttonStyle(.bordered)
         }
         .padding()
     }
