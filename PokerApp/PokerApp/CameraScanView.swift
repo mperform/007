@@ -47,16 +47,38 @@ struct CameraScanView: View {
     func SubmitButton() -> some View {
         Button {
             Task {
+//                let first = await ImageStore.shared.postHand(image: yourCards)
+//                let second = await ImageStore.shared.postCommunityCards(image: communityCards)
+//                if first != nil && second != nil{
+//                    ImageStore.shared.getHand()
+//                    ImageStore.shared.getCommunityCards()
+// 
+//                }
+//                isPresenting.toggle()
+                
+                
+                
                 if let _ = await ImageStore.shared.postHand(image: yourCards) {
                     ImageStore.shared.getHand()
                     if let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
                         ImageStore.shared.getCommunityCards()
+                        if let _ = await ImageStore.shared.postHand(image: yourCards) {
+                        }
                     }
                 }
-                
-//                print("This", ImageStore.shared.yourCards)
-//                print("This", ImageStore.shared.yourCommunityCards)
                 isPresenting.toggle()
+                
+                
+                
+//                if let _ = await ImageStore.shared.postHand(image: yourCards),
+//                   let _ = await ImageStore.shared.postCommunityCards(image: communityCards) {
+//                    await Task.sleep(3 * 1_000_000_000)
+//                    ImageStore.shared.getHand()
+//                    ImageStore.shared.getCommunityCards()
+//                    
+//                    isPresenting.toggle()
+//                }
+                        
             }
         } label: {
             Text("Continue")
