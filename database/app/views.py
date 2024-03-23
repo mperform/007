@@ -172,3 +172,41 @@ def postmoney(request):
         cursor.execute('INSERT INTO usermoney (useramount, callamount) VALUES (%s, %s);', (useramount, callamount))
 
     return JsonResponse({})
+
+@csrf_exempt
+def postfinalhand(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    response = json_data['cards']
+    cards = response.split(',')
+
+    cursor = connection.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXISTS userfinalhands (cards TEXT);')
+    cursor.execute('TRUNCATE TABLE userfinalhands;')
+
+    for card in cards:
+        cursor.execute('INSERT INTO userfinalhands (cards) VALUES '
+                   '(%s);', (card))
+
+    return JsonResponse({})
+
+@csrf_exempt
+def postfinalcommunitycards(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+
+    json_data = json.loads(request.body)
+    response = json_data['cards']
+    cards = response.split(',')
+
+    cursor = connection.cursor()
+    cursor.execute('CREATE TABLE IF NOT EXISTS finalcommunitycards (cards TEXT);')
+    cursor.execute('TRUNCATE TABLE finalcommunitycards;')
+
+    for card in cards:
+        cursor.execute('INSERT INTO finalcommunitycards (cards) VALUES '
+                   '(%s);', (card))
+
+    return JsonResponse({})

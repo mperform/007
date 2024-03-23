@@ -27,4 +27,6 @@ urlpatterns = [
     path('gethand/', views.gethand, name='gethand'),
     path('postcommunitycards/', views.postcommunitycards, name='postcommunitycards'),
     path('getcommunitycards/', views.getcommunitycards, name='getcommunitycards'),
+    path('postfinalhand/', views.postfinalhand, name='postfinalhand'),
+    path('postfinalcommunitycards/', views.postfinalcommunitycards, name='postfinalcommunitycards'),
     ]
