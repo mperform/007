@@ -178,5 +178,43 @@ final class ImageStore {
 
         }.resume()
     }
+    
+    func postmoney(_ useramount: String, _ callamount: String, completion: @escaping () -> ()) {
+        let jsonObj = ["useramount": useramount,
+                       "callamount": callamount]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj) else {
+            print("postmoney: jsonData serialization error")
+            return
+        }
+                
+        guard let apiUrl = URL(string: "\(serverUrl)postmoney/") else {
+            print("postmoney: Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                print("postmoney: NETWORKING ERROR")
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    print("postmoney: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                } else {
+                    completion()
+                }
+            }
+
+        }.resume()
+    }
 
 }
