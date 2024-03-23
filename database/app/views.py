@@ -156,19 +156,40 @@ def getcommunitycards(request):
     return JsonResponse(response)
 
 @csrf_exempt
+def getmoney(request):
+    """
+    user makes get request to retrieve community cards
+    """
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT useramount, callamount FROM usermoney ORDER BY id DESC;')
+    rows = cursor.fetchall()
+    usermoney = [row[0] for row in rows]
+    callamount = [row[1] for row in rows]
+    response = {}
+    response['useramount'] = usermoney
+    response['callamount'] = callamount
+    return JsonResponse(response)
+
+@csrf_exempt
 def postmoney(request):
     """
     user makes post request to store their money
     """
     if request.method != 'POST':
         return HttpResponse(status=400)
+
+    json_data = json.loads(request.body)
     
-    useramount = request.POST.get("useramount")
-    callamount = request.POST.get("callamount")
+    useramount = json_data.get("useramount")
+    callamount = json_data.get("callamount")
     
     if useramount and callamount:
         cursor = connection.cursor()
         cursor.execute('CREATE TABLE IF NOT EXISTS usermoney (id SERIAL PRIMARY KEY, useramount TEXT, callamount TEXT);')
+        cursor.execute('TRUNCATE TABLE usermoney;')
         cursor.execute('INSERT INTO usermoney (useramount, callamount) VALUES (%s, %s);', (useramount, callamount))
 
     return JsonResponse({})
@@ -210,3 +231,35 @@ def postfinalcommunitycards(request):
                    '(%s);', (card,))
 
     return JsonResponse({})
+
+@csrf_exempt
+def getfinalhand(request):
+    """
+    user makes get request to retrieve their final hand
+    """
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT cards FROM userfinalhands;')
+    rows = cursor.fetchall()
+    cards = [row[0] for row in rows]
+    response = {}
+    response['cards'] = cards
+    return JsonResponse(response)
+
+@csrf_exempt
+def getfinalcommunitycards(request):
+    """
+    user makes get request to retrieve final community cards
+    """
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT cards FROM finalcommunitycards;')
+    rows = cursor.fetchall()
+    cards = [row[0] for row in rows]
+    response = {}
+    response['cards'] = cards
+    return JsonResponse(response)

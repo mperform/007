@@ -23,10 +23,13 @@ urlpatterns = [
     # path('getcurrenthands/', views.getcurrenthands, name='getcurrenthands'),
     # path('postcalls/', views.postcalls, name='postcalls'),
     path('postmoney/', views.postmoney, name='postmoney'),
+    path('getmoney/', views.getmoney, name='getmoney'),
     path('posthand/', views.posthand, name='posthand'),
     path('gethand/', views.gethand, name='gethand'),
     path('postcommunitycards/', views.postcommunitycards, name='postcommunitycards'),
     path('getcommunitycards/', views.getcommunitycards, name='getcommunitycards'),
     path('postfinalhand/', views.postfinalhand, name='postfinalhand'),
+    path('getfinalhand/', views.getfinalhand, name='getfinalhand'),
     path('postfinalcommunitycards/', views.postfinalcommunitycards, name='postfinalcommunitycards'),
+    path('getfinalcommunitycards/', views.getfinalcommunitycards, name='getfinalcommunitycards'),
     ]
