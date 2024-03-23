@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MoneyView: View {
     @Binding var isPresented: Bool
-    @State private var text1: String = ""
-    @State private var text2: String = ""
+    @State private var useramount: String = ""
+    @State private var callamount: String = ""
     @State private var isPresenting = false
 
     var body: some View {
@@ -19,7 +19,7 @@ struct MoneyView: View {
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number", text: $text1)
+            TextField("Enter a number", text: $useramount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
@@ -27,22 +27,16 @@ struct MoneyView: View {
                 .font(.title)
                 .padding(.vertical, 20)
                 .multilineTextAlignment(.center)
-            TextField("Enter a number", text: $text2)
+            TextField("Enter a number", text: $callamount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
         }
-        HStack(spacing:60) {
+        HStack() {
                 Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Go Back")
-                        .padding(.vertical, 20)
-                }
-                .buttonStyle(BorderlessButtonStyle())
-                
-                Button {
-                    isPresenting.toggle()
+                    ImageStore.shared.postmoney(useramount, callamount) {
+                        isPresenting.toggle()
+                    }
                 } label: {
                     Text("Continue")
                         .padding(.vertical, 20)

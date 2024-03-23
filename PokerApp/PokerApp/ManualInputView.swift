@@ -49,7 +49,7 @@ struct ManualInputView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 .fullScreenCover(isPresented: $isPresenting) {
-                    CardsView(isPresented: $isPresenting, playerCardsString: ImageStore.shared.yourCards, communityCardsString: ImageStore.shared.yourCommunityCards)
+                    CardsView(isPresented: $isPresenting, playerCardsString: playerCards, communityCardsString: communityCards)
                 }
             }
         }

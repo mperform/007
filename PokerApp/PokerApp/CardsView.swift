@@ -58,7 +58,11 @@ struct CardsView: View {
                 .buttonStyle(BorderlessButtonStyle())
                 
                 Button {
-                    isPresenting.toggle()
+                    ImageStore.shared.postfinalhand(playerCardsString) {
+                        ImageStore.shared.postfinalcommunitycards(communityCardsString) {
+                            isPresenting.toggle()
+                        }
+                    }
                 } label: {
                     Text("Confirm")
                         .padding(.vertical, 20)
