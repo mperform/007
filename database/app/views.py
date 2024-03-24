@@ -260,6 +260,13 @@ def getbesthand(request):
     community_cards = pp.Card.of(*(comm_cards))
     round_result = pp.PokerRound.PokerRoundResult([player], community_cards)
 
-    response = {'best_hand': round_result.str_winning_hand()}
+    best_hand = round_result.str_winning_hand()
+
+    cursor.execute('CREATE TABLE IF NOT EXISTS besthand (hand TEXT);')
+    cursor.execute('TRUNCATE TABLE besthand;')
+    cursor.execute('INSERT INTO besthand (hand) VALUES '
+                   '(%s);', (best_hand,))
+    
+    response = {'best_hand': best_hand}
     return JsonResponse(response)
     
