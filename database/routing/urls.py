@@ -32,4 +32,5 @@ urlpatterns = [
     path('getfinalhand/', views.getfinalhand, name='getfinalhand'),
     path('postfinalcommunitycards/', views.postfinalcommunitycards, name='postfinalcommunitycards'),
     path('getfinalcommunitycards/', views.getfinalcommunitycards, name='getfinalcommunitycards'),
+    path('getbesthand/', views.getbesthand, name='getbesthand'),
     ]

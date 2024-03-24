@@ -9,6 +9,9 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import base64
 
+import pied_poker as pp
+
+
 def home(request):
     return HttpResponse("Welcome to the home page!")
 def getchatts(request):
@@ -263,3 +266,26 @@ def getfinalcommunitycards(request):
     response = {}
     response['cards'] = cards
     return JsonResponse(response)
+
+@csrf_exempt
+def getbesthand(request):
+    """
+    Return the best hand based on the cards stored in the database.
+    """
+
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    
+    cursor = connection.cursor()
+    cursor.execute('SELECT cards FROM finalcommunitycards;')
+    comm_cards = [row[0] for row in cursor.fetchall()]
+    cursor.execute('SELECT cards FROM userfinalhands;')
+    user_hands = [row[0] for row in cursor.fetchal()]
+
+    player = pp.Player('Player', pp.Card.of(*user_hands))
+    community_cards = pp.Card.of(*[comm_cards])
+    round_result = pp.PokerRound.PokerRoundResult([player], community_cards)
+
+    response = {'best_hand': round_result.str_winning_hand()}
+    
+    
