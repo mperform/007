@@ -1,0 +1,2 @@
+1. grant execute permission to RSA KEY file 
+2. ssh -i <path to 007-eecs-441.pem> ubuntu@18.117.252.52
