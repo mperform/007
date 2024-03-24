@@ -10,10 +10,12 @@ final class ImageStore {
                                      // instances can be created
     private (set) var yourCards: String = ""
     private (set) var yourCommunityCards: String = ""
-    private (set) var yourFinalCards: [String] = []
-    private (set) var yourFinalCommunityCards: [String] = []
+//    private (set) var yourFinalCards: [String] = []
+//    private (set) var yourFinalCommunityCards: [String] = []
+    private (set) var yourFinalCards: String = ""
+    private (set) var yourFinalCommunityCards: String = ""
     private (set) var bestHand: String = ""
-    private let serverUrl = "https://18.117.138.137/"
+    private let serverUrl = "https://18.117.252.52/"
     
     func getHand() {
         guard let apiUrl = URL(string: "\(serverUrl)gethand/") else {
@@ -37,6 +39,7 @@ final class ImageStore {
             let cardsReceived = jsonObj["cards"] as? [String] ?? []
             self.yourCards = ""
             for entry in cardsReceived {
+//                print(entry)
                 if (entry == cardsReceived.last) {
                     self.yourCards += entry
                 }
@@ -240,9 +243,14 @@ final class ImageStore {
                 return
             }
             let cardsReceived = jsonObj["cards"] as? [String] ?? []
-            self.yourFinalCards = []
+            self.yourFinalCards = ""
             for entry in cardsReceived {
-                self.yourFinalCards.append(entry)
+                if (entry == cardsReceived.last) {
+                    self.yourFinalCards += entry
+                }
+                else {
+                    self.yourFinalCards += entry + ", "
+                }
             }
             completion()
         }
@@ -269,9 +277,14 @@ final class ImageStore {
                 return
             }
             let cardsReceived = jsonObj["cards"] as? [String] ?? []
-            self.yourFinalCommunityCards = []
+            self.yourFinalCommunityCards = ""
             for entry in cardsReceived {
-                self.yourFinalCommunityCards.append(entry)
+                if (entry == cardsReceived.last) {
+                    self.yourFinalCommunityCards += entry
+                }
+                else {
+                    self.yourFinalCommunityCards += entry + ", "
+                }
             }
             completion()
         }

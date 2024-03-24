@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct PokerAppApp: App {
+    @State private var isPresenting = true
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(isPresented: $isPresenting)
         }
     }
 }

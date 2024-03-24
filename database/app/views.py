@@ -269,4 +269,3 @@ def getbesthand(request):
     
     response = {'best_hand': best_hand}
     return JsonResponse(response)
-    

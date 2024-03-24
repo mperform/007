@@ -15,6 +15,10 @@ struct PlayerInfoView: View {
 
     var body: some View {
         VStack {
+            Text("Enter Opponent Information")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
+                .multilineTextAlignment(.center)
             Text("How Many Opponents Are There?")
                 .font(.title)
                 .padding(.vertical, 10)
@@ -25,7 +29,7 @@ struct PlayerInfoView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
-            Text("What is Your Position")
+            Text("What is Your Position?")
                 .font(.title)
                 .padding(.vertical, 10)
                 .multilineTextAlignment(.center)

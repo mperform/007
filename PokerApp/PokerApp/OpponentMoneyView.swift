@@ -51,7 +51,14 @@ struct OpponentMoneyView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.vertical, 10) // Add padding around the text field
             }
-            HStack {
+            HStack(spacing: 60) {
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Text("Go Back")
+                        .padding(.vertical, 20)
+                }
+                .buttonStyle(BorderlessButtonStyle())
                 Button {
                     isPresenting.toggle()
                 } label: {
@@ -62,13 +69,6 @@ struct OpponentMoneyView: View {
                 .fullScreenCover(isPresented: $isPresenting) {
                     BestHandView(isPresented: $isPresenting)
                 }
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Go Back")
-                        .padding(.vertical, 20)
-                }
-                .buttonStyle(BorderlessButtonStyle())
             }
         }
         .padding()

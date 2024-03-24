@@ -15,9 +15,15 @@ struct MoneyView: View {
 
     var body: some View {
         VStack {
+            Text("Enter Money Information")
+                .font(.system(size: 30, weight: .bold, design: .default))
+                .padding(.top, 20)
+                .multilineTextAlignment(.center)
             Text("How Much Money Do You Have?")
                 .font(.title)
                 .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
+            Text("(Enter a whole number, ex: 5)")
                 .multilineTextAlignment(.center)
             TextField("Enter a number", text: $useramount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -26,6 +32,8 @@ struct MoneyView: View {
             Text("What Is The Amount of Money Needed to Call?")
                 .font(.title)
                 .padding(.vertical, 20)
+                .multilineTextAlignment(.center)
+            Text("(Enter a whole number, ex: 5)")
                 .multilineTextAlignment(.center)
             TextField("Enter a number", text: $callamount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())

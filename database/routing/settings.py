@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(-&89ovc&-#6zmot89hja(b4erazem%=45si8gf_29i9)23fme'
+SECRET_KEY = 'django-insecure-)#r(d^$j!fn=u=_35jypj^8ox3q10@7zs*s18936j^j0!w=3yf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.117.138.137', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['18.117.252.52', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -78,7 +78,7 @@ DATABASES = {
       'ENGINE': 'django.db.backends.postgresql',
       'NAME': 'pokerpro',
       'USER': 'poker',
-      'PASSWORD': '006',
+      'PASSWORD': 'pokerpro',
       'HOST': 'localhost',
       'PORT': '',
   }
@@ -119,11 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'   # added line
+STATIC_ROOT = BASE_DIR / 'static'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = 'https://18.117.138.137/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760

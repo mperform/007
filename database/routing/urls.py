@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.home, name='home'),  # Add this line for the root path
     path('postmoney/', views.postmoney, name='postmoney'),
     path('getmoney/', views.getmoney, name='getmoney'),
@@ -30,4 +32,4 @@ urlpatterns = [
     path('postfinalcommunitycards/', views.postfinalcommunitycards, name='postfinalcommunitycards'),
     path('getfinalcommunitycards/', views.getfinalcommunitycards, name='getfinalcommunitycards'),
     path('getbesthand/', views.getbesthand, name='getbesthand'),
-    ]
+]

@@ -10,7 +10,23 @@ import SwiftUI
 
 struct BestHandView: View {
     @Binding var isPresented: Bool
+    @State private var isPresenting = false;
     @State private var isLoading = true
+    
+    var playerCards: [String] {
+        // Convert input string to lowercase, split it into an array of substrings
+        let inputArray = ImageStore.shared.yourFinalCards.lowercased().components(separatedBy: ", ")
+        
+        // Use map to query the dictionary and generate a list of final strings
+        return inputArray.compactMap { playingCards[$0] }
+    }
+    var communityCards: [String] {
+        // Convert input string to lowercase, split it into an array of substrings
+        let inputArray = ImageStore.shared.yourFinalCommunityCards.lowercased().components(separatedBy: ", ")
+        
+        // Use map to query the dictionary and generate a list of final strings
+        return inputArray.compactMap { playingCards[$0] }
+    }
     
 
     var body: some View {
@@ -18,19 +34,33 @@ struct BestHandView: View {
             if isLoading {
                 ProgressView("Loading...")
             } else {
+                Text("Your Results")
+                    .font(.system(size: 30, weight: .bold, design: .default))
+                    .padding(.top, 20)
                 List {
                     Section(header: Text("Your Cards")) {
-                        ForEach(ImageStore.shared.yourFinalCards, id: \.self) { playerCards in
+                        ForEach(playerCards, id: \.self) { playerCards in
                             Text(playerCards)
                         }
                     }
                     Section(header: Text("Community Cards")) {
-                        ForEach(ImageStore.shared.yourFinalCommunityCards, id: \.self) { communityCards in
+                        ForEach(communityCards, id: \.self) { communityCards in
                             Text(communityCards)
                         }
                     }
+                    Section(header: Text("Your Best Hand")) {
+                        Text(ImageStore.shared.bestHand)
+                    }
                 }
-                Text(ImageStore.shared.bestHand)
+                Button {
+                    isPresenting.toggle()
+                } label: {
+                    Text("Next Round")
+                        .padding(.vertical, 20)
+                        .padding(.horizontal,30)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
             }
         }
         .onAppear {
@@ -41,6 +71,9 @@ struct BestHandView: View {
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $isPresenting) {
+            ContentView(isPresented: $isPresenting)
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0BE0A1252BAE41C9007E9787 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE0A1242BAE41C9007E9787 /* Store.swift */; };
+		87767E682BAFE24A003F60E0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 87767E672BAFE24A003F60E0 /* Alamofire */; };
 		87EB6B3A2BA9EEC60010B9C6 /* PokerAppTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B392BA9EEC60010B9C6 /* PokerAppTest.swift */; };
 		87EB6B3C2BA9EEC60010B9C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B3B2BA9EEC60010B9C6 /* ContentView.swift */; };
 		87EB6B3E2BA9EEC90010B9C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87EB6B3D2BA9EEC90010B9C6 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		87EB6B4A2BA9F4780010B9C6 /* ManualInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B492BA9F4780010B9C6 /* ManualInputView.swift */; };
 		87EB6B4C2BA9F6C00010B9C6 /* MoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B4B2BA9F6C00010B9C6 /* MoneyView.swift */; };
 		87EB6B4E2BA9F91A0010B9C6 /* CameraScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EB6B4D2BA9F91A0010B9C6 /* CameraScanView.swift */; };
-		94711BAE2BAF4EEC00944560 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 94711BAD2BAF4EEC00944560 /* Alamofire */; };
 		94711BB02BAFCDCD00944560 /* BestHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94711BAF2BAFCDCD00944560 /* BestHandView.swift */; };
 		94F581152BABEB93008C237D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581142BABEB93008C237D /* Media.swift */; };
 		94F581172BABF239008C237D /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F581162BABF239008C237D /* PlayerInfoView.swift */; };
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94711BAE2BAF4EEC00944560 /* Alamofire in Frameworks */,
+				87767E682BAFE24A003F60E0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +119,7 @@
 			);
 			name = PokerApp;
 			packageProductDependencies = (
-				94711BAD2BAF4EEC00944560 /* Alamofire */,
+				87767E672BAFE24A003F60E0 /* Alamofire */,
 			);
 			productName = PokerApp;
 			productReference = 87EB6B362BA9EEC60010B9C6 /* PokerApp.app */;
@@ -150,7 +150,7 @@
 			);
 			mainGroup = 87EB6B2D2BA9EEC60010B9C6;
 			packageReferences = (
-				94711BAC2BAF4EEC00944560 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				87767E662BAFE24A003F60E0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 87EB6B372BA9EEC60010B9C6 /* Products */;
 			projectDirPath = "";
@@ -324,7 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerApp/Preview Content\"";
-				DEVELOPMENT_TEAM = PLF6AJ2G54;
+				DEVELOPMENT_TEAM = QABM8539KP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera";
@@ -338,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.hamzahus.PokerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.tmaire.PokerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -354,7 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerApp/Preview Content\"";
-				DEVELOPMENT_TEAM = PLF6AJ2G54;
+				DEVELOPMENT_TEAM = QABM8539KP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera";
@@ -368,7 +368,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.hamzahus.PokerApp;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.tmaire.PokerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -400,7 +400,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		94711BAC2BAF4EEC00944560 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		87767E662BAFE24A003F60E0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -411,9 +411,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		94711BAD2BAF4EEC00944560 /* Alamofire */ = {
+		87767E672BAFE24A003F60E0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 94711BAC2BAF4EEC00944560 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 87767E662BAFE24A003F60E0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
