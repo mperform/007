@@ -1,3 +1,0 @@
-extendedKeyUsage = serverAuth
-#                  👇👇👇👇👇👇👇👇👇
-subjectAltName = IP:18.117.138.137   # or DNS:YOUR_SERVER_FQDN
