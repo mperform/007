@@ -39,8 +39,7 @@ struct MoneyView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad) // Set keyboard type to number pad
                 .padding(.vertical, 40) // Add padding around the text field
-        }
-        HStack() {
+            HStack() {
                 Button {
                     ImageStore.shared.postmoney(useramount, callamount) {
                         isPresenting.toggle()
@@ -51,8 +50,13 @@ struct MoneyView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 .fullScreenCover(isPresented: $isPresenting) {
-                     PlayerInfoView(isPresented: $isPresenting)
+                    PlayerInfoView(isPresented: $isPresenting)
                 }
             }
+        }
+        .onTapGesture {
+            // Dismiss the keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
     }
 }

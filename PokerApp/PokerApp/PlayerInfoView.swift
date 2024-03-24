@@ -59,6 +59,10 @@ struct PlayerInfoView: View {
                 }
             }
         }
+        .onTapGesture {
+            // Dismiss the keyboard
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
         .padding()
     }
 }
