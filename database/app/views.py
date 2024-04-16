@@ -267,8 +267,8 @@ def getbesthand(request):
     cursor.execute('INSERT INTO besthand (hand) VALUES '
                    '(%s);', (best_hand,))
     
-    cursor.execute('SELECT numoppoents FROM playerinfo')
-    num_opponents = [row[0] for row in cursor.fetchall()]
+    cursor.execute('SELECT numopponents FROM playerinfo')
+    num_opponents = cursor.fetchall()[0][0]
     
     simulator = pp.PokerRound.PokerRoundSimulator(community_cards=community_cards,
                        players=[player],
@@ -283,26 +283,23 @@ def getbesthand(request):
     cursor.execute('INSERT INTO winningprob (probability) VALUES '
                    '(%s);', (winning_probability,))   
     
-    response = {'best_hand': best_hand, 'winning_probability': winning_probability}
+    response = {'best_hand': best_hand, 'winning_probability': str(winning_probability)}
     return JsonResponse(response)
-
+    
 @csrf_exempt
 def postplayerinfo(request):
     if request.method != 'POST':
         return HttpResponse(status=404)
-    
+
     json_data = json.loads(request.body)
     num_players = json_data['numopponents']
     position = json_data['position']
-    
+
     cursor = connection.cursor()
-    cursor.execute('CREATE TABLE IF NOT EXISTS playerinfo (numopponents TEXT, position TEXT);')
+    cursor.execute('CREATE TABLE IF NOT EXISTS playerinfo (numopponents INTEGER, position INTEGER);')
+
     cursor.execute('TRUNCATE TABLE playerinfo;')
-    cursor.execute('INSERT INTO playerinfo (numopponents, position) VALUES (%s, %s);', (num_players, position))
-    
-    response = {
-        "numopponents": num_players,
-        "position": position
-    }
-    return JsonResponse(response), 200
+    cursor.execute('INSERT INTO playerinfo (numopponents, position) VALUES (%s, %s);', (int(num_players), int(position)))
+
+    return JsonResponse({})
 

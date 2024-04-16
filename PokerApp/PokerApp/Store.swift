@@ -15,6 +15,7 @@ final class ImageStore {
     private (set) var yourFinalCards: String = ""
     private (set) var yourFinalCommunityCards: String = ""
     private (set) var bestHand: String = ""
+    private (set) var winningProbability: String = ""
     private let serverUrl = "https://18.117.252.52/"
     
     func getHand() {
@@ -310,7 +311,9 @@ final class ImageStore {
                 return
             }
             let handReceived = jsonObj["best_hand"] as? String ?? ""
+            let probability = jsonObj["winning_probability"] as? String ?? ""
             self.bestHand = handReceived
+            self.winningProbability = probability
             completion()
         }
     }
@@ -337,13 +340,13 @@ final class ImageStore {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let _ = data, error == nil else {
-                print("postpl: NETWORKING ERROR")
+                print("postPlayerInfo: NETWORKING ERROR")
                 return
             }
 
             if let httpStatus = response as? HTTPURLResponse {
                 if httpStatus.statusCode != 200 {
-                    print("postmoney: HTTP STATUS: \(httpStatus.statusCode)")
+                    print("postPlayerInfo: HTTP STATUS: \(httpStatus.statusCode)")
                     return
                 } else {
                     completion()
