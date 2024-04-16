@@ -48,7 +48,9 @@ struct PlayerInfoView: View {
                 }
                 .buttonStyle(BorderlessButtonStyle())
                 Button {
-                    isPresenting.toggle()
+                    ImageStore.shared.postPlayerInfo(numPlayers, position) {
+                        isPresenting.toggle()
+                    }
                 } label: {
                     Text("Continue")
                         .padding(.vertical, 20)
