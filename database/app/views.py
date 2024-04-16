@@ -269,3 +269,21 @@ def getbesthand(request):
     
     response = {'best_hand': best_hand}
     return JsonResponse(response)
+
+@csrf_exempt
+def getwinningprobability(request):
+    """Get winning probability using PiedPoker
+
+        
+    """    
+    if request.method != 'GET':
+        return HttpResponse(status=400)
+    # get all info for piedpoker
+    
+    cursor = connection.cursor()
+    # get commnunity cards
+    cursor.execute('SELECT cards FROM finalcommunitycards;')
+    comm_cards = [row[0] for row in cursor.fetchall()]
+    # get user cards
+    cursor.execute('SELECT cards FROM userfinalhands;')
+    user_hands = [row[0] for row in cursor.fetchal()]
