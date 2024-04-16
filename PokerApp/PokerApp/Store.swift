@@ -314,5 +314,43 @@ final class ImageStore {
             completion()
         }
     }
+    
+    func postPlayerInfo(_ numPlayers: Int, _ position: Int, completion: @escaping () -> ()) {
+        let jsonObj = ["numopponents": numPlayers,
+                       "position": position]
+
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: jsonObj) else {
+            print("postPlayerInfo: jsonData serialization error")
+            return
+        }
+                
+        guard let apiUrl = URL(string: "\(serverUrl)postplayerinfo/") else {
+            print("postPlayerInfo: Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: apiUrl)
+
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                print("postpl: NETWORKING ERROR")
+                return
+            }
+
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    print("postmoney: HTTP STATUS: \(httpStatus.statusCode)")
+                    return
+                } else {
+                    completion()
+                }
+            }
+
+        }.resume()
+    }
 
 }
