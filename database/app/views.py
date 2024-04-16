@@ -296,13 +296,13 @@ def postplayerinfo(request):
     position = json_data['position']
     
     cursor = connection.cursor()
-    cursor.execute('CREATE TABLE IF NOT EXISTS playerinfo (numopponents TEXT, position TEXT);')
+    cursor.execute('CREATE TABLE IF NOT EXISTS playerinfo (numopponents INTEGER, position INTEGER);')
+    
     cursor.execute('TRUNCATE TABLE playerinfo;')
-    cursor.execute('INSERT INTO playerinfo (numopponents, position) VALUES (%s, %s);', (num_players, position))
+    cursor.execute('INSERT INTO playerinfo (numopponents, position) VALUES (%s, %s);', (int(num_players), int(position)))
     
     response = {
         "numopponents": num_players,
         "position": position
     }
     return JsonResponse(response), 200
-
