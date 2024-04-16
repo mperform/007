@@ -254,7 +254,7 @@ def getbesthand(request):
     cursor.execute('SELECT cards FROM finalcommunitycards;')
     comm_cards = [row[0] for row in cursor.fetchall()]
     cursor.execute('SELECT cards FROM userfinalhands;')
-    user_hands = [row[0] for row in cursor.fetchal()]
+    user_hands = [row[0] for row in cursor.fetchall()]
 
     player = pp.Player('Player', pp.Card.of(*user_hands))
     community_cards = pp.Card.of(*(comm_cards))
@@ -267,7 +267,23 @@ def getbesthand(request):
     cursor.execute('INSERT INTO besthand (hand) VALUES '
                    '(%s);', (best_hand,))
     
-    response = {'best_hand': best_hand}
+    cursor.execute('SELECT numoppoents FROM playerinfo')
+    num_opponents = [row[0] for row in cursor.fetchall()]
+    
+    simulator = pp.PokerRound.PokerRoundSimulator(community_cards=community_cards,
+                       players=[player],
+                      total_players=(num_opponents+1))
+    num_simulations = 5000
+    simulation_result = simulator.simulate(n=num_simulations, n_jobs=1)
+    simulation_result.visualize_player_hand_distribution()
+    winning_probability = simulation_result.probability_of(pp.Probability.PlayerWins()).probability
+
+    cursor.execute('CREATE TABLE IF NOT EXISTS winningprob (probability DECIMAL(5, 4));')
+    cursor.execute('TRUNCATE TABLE winningprob;')
+    cursor.execute('INSERT INTO winningprob (probability) VALUES '
+                   '(%s);', (winning_probability,))   
+    
+    response = {'best_hand': best_hand, 'winning_probability': winning_probability}
     return JsonResponse(response)
 
 @csrf_exempt
