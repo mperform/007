@@ -32,4 +32,5 @@ urlpatterns = [
     path('postfinalcommunitycards/', views.postfinalcommunitycards, name='postfinalcommunitycards'),
     path('getfinalcommunitycards/', views.getfinalcommunitycards, name='getfinalcommunitycards'),
     path('getbesthand/', views.getbesthand, name='getbesthand'),
+    path('postplayerinfo/', views.postplayerinfo, name='getbesthand')
 ]
