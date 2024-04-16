@@ -271,19 +271,22 @@ def getbesthand(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def getwinningprobability(request):
-    """Get winning probability using PiedPoker
-
-        
-    """    
-    if request.method != 'GET':
-        return HttpResponse(status=400)
-    # get all info for piedpoker
+def postplayerinfo(request):
+    if request.method != 'POST':
+        return HttpResponse(status=404)
+    
+    json_data = json.loads(request.body)
+    num_players = json_data['numopponents']
+    position = json_data['position']
     
     cursor = connection.cursor()
-    # get commnunity cards
-    cursor.execute('SELECT cards FROM finalcommunitycards;')
-    comm_cards = [row[0] for row in cursor.fetchall()]
-    # get user cards
-    cursor.execute('SELECT cards FROM userfinalhands;')
-    user_hands = [row[0] for row in cursor.fetchal()]
+    cursor.execute('CREATE TABLE IF NOT EXISTS playerinfo (numopponents TEXT, position TEXT);')
+    cursor.execute('TRUNCATE TABLE playerinfo;')
+    cursor.execute('INSERT INTO playerinfo (numopponents, position) VALUES (%s, %s);', (num_players, position))
+    
+    response = {
+        "numopponents": num_players,
+        "position": position
+    }
+    return JsonResponse(response), 200
+
