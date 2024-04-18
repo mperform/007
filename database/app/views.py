@@ -250,11 +250,13 @@ def getbesthand(request):
         return HttpResponse(status=400)
 
     cursor = connection.cursor()
+    cursor.execute('SELECT cards FROM finalcommunitycards;')
+    comm_cards = [row[0] for row in cursor.fetchall()]
     cursor.execute('SELECT cards FROM userfinalhands;')
     user_hands = [row[0] for row in cursor.fetchall()]
 
     player = pp.Player('Player', pp.Card.of(*user_hands))
-    community_cards = pp.Card.of(*(community_cards))
+    community_cards = pp.Card.of(*(comm_cards))
     round_result = pp.PokerRound.PokerRoundResult([player], community_cards)
 
     best_hand = round_result.str_winning_hand()
