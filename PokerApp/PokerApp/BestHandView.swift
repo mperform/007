@@ -58,7 +58,15 @@ struct BestHandView: View {
                         Text(ImageStore.shared.nextDecision)
                     }
                     Section(header: Text("Future Hand Probabilities")) {
-                        Text(ImageStore.shared.handProbabilities.description)
+                        ForEach(ImageStore.shared.handProbabilities.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
+                            if let actualValue = value as? Double {
+                                if actualValue > 0 {
+                                    Text("\(key): \(String(format: "%.2f", (actualValue * 100)))%")
+                                        .font(.body)
+                                        .padding(.horizontal)
+                                }
+                            }
+                        }
                     }
                 }
                 Button {

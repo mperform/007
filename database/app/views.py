@@ -276,7 +276,7 @@ def getbesthand(request):
     hand_probs = {}
     for hand_type in reversed(pp.Hand.PokerHand.ALL_HANDS_RANKED):
         p = simulation_result.probability_of(pp.Probability.PlayerHasHand(hand_type, player))
-        hand_probs[hand_type.__name__] = str(p.probability)
+        hand_probs[hand_type.__name__] = p.probability
         
     winning_probability = simulation_result.probability_of(pp.Probability.PlayerWins()).probability
 

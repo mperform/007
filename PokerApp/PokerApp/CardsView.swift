@@ -16,14 +16,14 @@ struct CardsView: View {
     
     var playerCards: [String] {
         // Convert input string to lowercase, split it into an array of substrings
-        let inputArray = playerCardsString.lowercased().components(separatedBy: ", ")
+        let inputArray = playerCardsString.lowercased().trimmingCharacters(in: .whitespaces).components(separatedBy: ", ")
         
         // Use map to query the dictionary and generate a list of final strings
         return inputArray.compactMap { playingCards[$0] }
     }
     var communityCards: [String] {
         // Convert input string to lowercase, split it into an array of substrings
-        let inputArray = communityCardsString.lowercased().components(separatedBy: ", ")
+        let inputArray = communityCardsString.lowercased().trimmingCharacters(in: .whitespaces).components(separatedBy: ", ")
         
         // Use map to query the dictionary and generate a list of final strings
         return inputArray.compactMap { playingCards[$0] }

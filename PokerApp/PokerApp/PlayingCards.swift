@@ -56,7 +56,7 @@ let playingCards: [String:String] = [
     "7h": "Seven of Hearts",
     "8h": "Eight of Hearts",
     "9h": "Nine of Hearts",
-    "1hc": "Ten of Hearts",
+    "10h": "Ten of Hearts",
     "jh": "Jack of Hearts",
     "qh": "Queen of Hearts",
     "kh": "King of Hearts",
