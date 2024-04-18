@@ -254,7 +254,7 @@ def getbesthand(request):
     user_hands = [row[0] for row in cursor.fetchall()]
 
     player = pp.Player('Player', pp.Card.of(*user_hands))
-    community_cards = pp.Card.of(*(comm_cards))
+    community_cards = pp.Card.of(*(community_cards))
     round_result = pp.PokerRound.PokerRoundResult([player], community_cards)
 
     best_hand = round_result.str_winning_hand()
@@ -272,7 +272,12 @@ def getbesthand(request):
                       total_players=(num_opponents+1))
     num_simulations = 5000
     simulation_result = simulator.simulate(n=num_simulations, n_jobs=1)
-    simulation_result.visualize_player_hand_distribution()
+    
+    hand_probs = {}
+    for hand_type in reversed(pp.Hand.PokerHand.ALL_HANDS_RANKED):
+        p = simulation_result.probability_of(pp.Probability.PlayerHasHand(hand_type, player))
+        hand_probs[hand_type.__name__] = p.probability
+        
     winning_probability = simulation_result.probability_of(pp.Probability.PlayerWins()).probability
 
     decision = ""
@@ -290,7 +295,11 @@ def getbesthand(request):
     cursor.execute('INSERT INTO winprob VALUES '
                    '(%s, %s);', (winning_probability, decision))
 
-    response = {'best_hand': best_hand, 'winning_probability': str(winning_probability), 'decision': decision}
+    response = {'best_hand': best_hand,
+                'winning_probability': str(winning_probability),
+                'decision': decision,
+                'hand_probabilities': hand_probs
+                }
     return JsonResponse(response)
 
 csrf_exempt
