@@ -57,6 +57,9 @@ struct BestHandView: View {
                     Section(header: Text("Recommended Decision")) {
                         Text(ImageStore.shared.nextDecision)
                     }
+                    Section(header: Text("Future Hand Probabilities")) {
+                        Text(ImageStore.shared.handProbabilities.description)
+                    }
                 }
                 Button {
                     isPresenting.toggle()

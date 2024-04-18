@@ -17,6 +17,7 @@ final class ImageStore {
     private (set) var bestHand: String = ""
     private (set) var winningProbability: String = ""
     private (set) var nextDecision: String = ""
+    private (set) var handProbabilities: [String: String] = [:]
     private let serverUrl = "https://18.117.252.52/"
     
     func getHand() {
@@ -314,9 +315,11 @@ final class ImageStore {
             let handReceived = jsonObj["best_hand"] as? String ?? ""
             let probability = jsonObj["winning_probability"] as? String ?? ""
             let decision = jsonObj["decision"] as? String ?? ""
+            let handProbs = jsonObj["hand_probabilities"] as? [String: String] ?? [:]
             self.bestHand = handReceived
             self.winningProbability = probability
             self.nextDecision = decision
+            self.handProbabilities = handProbs
             completion()
         }
     }
