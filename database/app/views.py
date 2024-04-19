@@ -256,7 +256,7 @@ def getbesthand(request):
     user_hands = [row[0] for row in cursor.fetchall()]
 
     player = pp.Player('Player', pp.Card.of(*user_hands))
-    community_cards = pp.Card.of(*(comm_cards))
+    community_cards = pp.Card.of(*(comm_cards)) if len(comm_cards) > 0 else []
     round_result = pp.PokerRound.PokerRoundResult([player], community_cards)
 
     best_hand = round_result.str_winning_hand()
