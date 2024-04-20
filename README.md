@@ -4,7 +4,7 @@
 |:-----:|:-----:|:--------:|
 |[<img src="https://eecs441.eecs.umich.edu/img/admin/video.png">][video]|[<img src="https://eecs441.eecs.umich.edu/img/admin/wiki.png">][wiki]|[<img src="https://eecs441.eecs.umich.edu/img/admin/trello.png">][agile]|
 
-![Elevator Pitch](https://github.com/mperform/007/assets/90877780/2f993744-95b0-4031-943f-db6f1cf699e8)
+![Elevator Pitch](https://raw.githubusercontent.com/58456051/133131373-e909da64-93cb-449f-b9f0-3a58dcb1b9db.png)
 ![Team](https://github.com/mperform/007/assets/90877780/173c9c45-a17c-4125-8ac3-8041624c4de1)
 
 
