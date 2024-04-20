@@ -4,8 +4,9 @@
 |:-----:|:-----:|:--------:|
 |[<img src="https://youtu.be/foQwZhJGjQo">][video]|[<img src="https://github.com/mperform/007/wiki">][wiki]|[<img src="https://trello.com/invite/b/Vv8SntdN/ATTI3f170d68a5d441668be068100a89786a1D63D4C5/007">][agile]|
 
-![Elevator Pitch](https://github.com/mperform/007/blob/main/.github/images/ElevatorPitch.pdf)
-![Team](https://raw.githubusercontent.com/mperform/007/blob/main/.github/images/team.pdf)
+![Elevator Pitch](https://github.com/mperform/007/assets/90877780/2f993744-95b0-4031-943f-db6f1cf699e8)
+![Team](https://github.com/mperform/007/assets/90877780/173c9c45-a17c-4125-8ac3-8041624c4de1)
+
 
 [video]: INSERT LINK
 [wiki]: https://github.com/mperform/007/wiki
