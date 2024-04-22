@@ -8,7 +8,7 @@
 ![Team](https://github.com/mperform/007/blob/main/.github/images/team.png)
 
 
-[video]:https://www.youtube.com/watch?v=foQwZhJGjQo
+[video]:https://youtu.be/DYpWBJ8P-5Y
 [wiki]:https://github.com/mperform/007/wiki
 [agile]:https://trello.com/invite/b/Vv8SntdN/ATTI3f170d68a5d441668be068100a89786a1D63D4C5/007
 
